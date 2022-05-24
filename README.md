@@ -1,2 +1,2 @@
 # gophercises
-attempting quiz game from gophercises - https://gophercises.com/
+quiz game attempt from gophercises - https://gophercises.com/
