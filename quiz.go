@@ -1,7 +1,13 @@
 package main
 
 import (
+	"encoding/csv"
 	"flag"
+	"fmt"
+	"io"
+	"log"
+	"os"
+	"strings"
 )
 
 var limitFlag int
@@ -15,6 +21,35 @@ func init() {
 
 func main() {
 
+	// var correctAnswers int
+	// var wrongAnswers int
+
 	flag.Parse()
+
+	//read data from the csv file - data variable is of type byte slice
+	data, err := os.ReadFile(csvFlag)
+
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
+
+	questionsCSV := string(data)
+
+	r := csv.NewReader(strings.NewReader(questionsCSV))
+
+	for {
+		record, err := r.Read()
+
+		if err == io.EOF {
+			break
+		}
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Println(record)
+	}
 
 }
