@@ -21,8 +21,9 @@ func init() {
 
 func main() {
 
-	// var correctAnswers int
-	// var wrongAnswers int
+	var correctAnswers int
+	var wrongAnswers int
+	var usersAnswer string
 
 	flag.Parse()
 
@@ -49,7 +50,17 @@ func main() {
 			log.Fatal(err)
 		}
 
-		fmt.Println(record)
+		fmt.Printf("%v:", record[0])
+		fmt.Scan(&usersAnswer)
+
+		if usersAnswer == record[1] {
+			correctAnswers++
+		} else {
+			wrongAnswers++
+		}
+
 	}
+
+	fmt.Println(correctAnswers, wrongAnswers)
 
 }
